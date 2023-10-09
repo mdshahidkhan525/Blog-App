@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'semantic-ui-react'
+import axios from 'axios';
 
 export default function Create() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const postData = () => {
-    console.log(title);
-    console.log(description);
+   axios
+      .post('http://localhost:3001/posts', {
+        title: title,
+        body: description
+      })
+      .then(response => {
+        console.log('Post created successful:', response.data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
 }
   return (
       <div>
