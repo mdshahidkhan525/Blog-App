@@ -11,6 +11,17 @@ export default function Read() {
     })
   }, [])
 
+  const handleDelete = (postId) => {
+    axios
+       .delete(`http://localhost:3001/posts/${postId}`)
+       .then(response => {
+         console.log('Post deleted successfully', response.data);
+       })
+       .catch(error => {
+         console.error('Error:', error);
+       });
+  }
+
   const [posts, setPosts] = useState([])
   console.log(posts, "posts")
   return (
@@ -20,6 +31,7 @@ export default function Read() {
                     <Table.Row>
                         <Table.HeaderCell>Title</Table.HeaderCell>
                         <Table.HeaderCell>Description</Table.HeaderCell>
+                        <Table.HeaderCell>Action</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 
@@ -29,6 +41,11 @@ export default function Read() {
                     <Table.Row>
                       <Table.Cell>{post.title}</Table.Cell>
                       <Table.Cell>{post.body}</Table.Cell>
+                      <Table.Cell>
+                        <Button color="red" onClick={() => handleDelete(post.id)}>
+                          Delete Post
+                        </Button>
+                      </Table.Cell>
                     </Table.Row>
                   );})}
                 </Table.Body>
