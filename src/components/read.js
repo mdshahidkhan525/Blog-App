@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Button, Form, Table, Modal } from 'semantic-ui-react'
 import axios from 'axios';
 import Create from './create';
+import Edit from './edit';
 
 export default function Read() {
   const [posts, setPosts] = useState([]);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [editPostId, setEditPostId] = useState(null);
+
 
   useEffect(() => {
     fetchPosts();
@@ -32,12 +36,20 @@ export default function Read() {
       });
   }
 
+  const handleEdit = (postId) => {
+    // Set the post ID to be edited and open the edit modal
+    setEditPostId(postId);
+    setIsEditModalOpen(true);
+  }
+
   const newPost = () => {
     setIsCreateModalOpen(true);
   }
 
   const closeModal = () => {
     setIsCreateModalOpen(false);
+    setIsEditModalOpen(false);
+    setEditPostId(null);
   }
 
   return (
@@ -66,7 +78,10 @@ export default function Read() {
                 <Table.Cell>{post.body}</Table.Cell>
                 <Table.Cell>
                   <Button color="red" onClick={() => handleDelete(post.id)}>
-                    Delete Post
+                    Delete
+                  </Button>
+                  <Button color="blue" onClick={() => handleEdit(post.id)}>
+                    Edit
                   </Button>
                 </Table.Cell>
               </Table.Row>
@@ -75,6 +90,7 @@ export default function Read() {
         </Table.Body>
       </Table>
 
+      {/* modal for create pop up */}
       <Modal open={isCreateModalOpen} onClose={closeModal}>
         <Modal.Header>Add New Post</Modal.Header>
         <Modal.Content>
@@ -82,6 +98,16 @@ export default function Read() {
            <Create setIsCreateModalOpen={setIsCreateModalOpen} fetchPosts={fetchPosts}/>
           </div>
           <Button color="orange" onClick={closeModal}>Cancel</Button>
+        </Modal.Content>
+      </Modal>
+
+      {/* modal for edit post */}
+      <Modal open={isEditModalOpen} onClose={closeModal}>
+        <Modal.Header>Edit Post</Modal.Header>
+        <Modal.Content>
+          <div>
+            <Edit postId={editPostId} fetchPosts={fetchPosts} closeModal={closeModal} />
+          </div>
         </Modal.Content>
       </Modal>
     </div>
