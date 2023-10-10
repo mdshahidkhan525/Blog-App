@@ -22,7 +22,7 @@ export default function Create({setIsCreateModalOpen, fetchPosts}) {
 }
   return (
       <div>
-          <Form className="create-form">
+          <Form>
               <Form.Field>
                   <label>Title</label>
                   <input placeholder='Title' onChange={(e) => setTitle(e.target.value)} />

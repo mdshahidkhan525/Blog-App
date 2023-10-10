@@ -7,7 +7,7 @@ function App() {
   return (
     <Router>
       <div className="main">
-        <h2 className="main-header">React CRUD Operations</h2>
+        <h2 className="main-header">My Blog App</h2>
         <div>
           <Routes>
             <Route path='/create' element={<Create />}/>

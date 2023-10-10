@@ -53,6 +53,7 @@ export default function Edit({ postId, fetchPosts, closeModal }) {
           />
         </Form.Field>
       </Form>
+      <br></br>
       <Button color="blue" onClick={handleUpdate}>
         Update
       </Button>

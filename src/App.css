@@ -42,15 +42,15 @@
 .main{
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #212121;
-  color: whitesmoke;
+  color: rgb(0, 0, 0);
   flex-direction: column;
+  padding-bottom: 20px;
 }
 
 .main-header{
   font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  padding-top:50px;
 }
 
 .create-form label{
