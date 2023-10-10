@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'semantic-ui-react'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function Create() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const navigate = useNavigate();
   const postData = () => {
    axios
       .post('http://localhost:3001/posts', {
@@ -13,6 +15,7 @@ export default function Create() {
       })
       .then(response => {
         console.log('Post created successful:', response.data);
+        navigate('/read');
       })
       .catch(error => {
         console.error('Error:', error);
