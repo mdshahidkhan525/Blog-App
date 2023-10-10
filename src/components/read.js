@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Form, Table } from 'semantic-ui-react'
+import { Button, Form, Table, Modal } from 'semantic-ui-react'
 import axios from 'axios';
+import Create from './create';
 
 export default function Read() {
   const [posts, setPosts] = useState([]);
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
   useEffect(() => {
     fetchPosts();
@@ -30,8 +32,21 @@ export default function Read() {
       });
   }
 
+  const newPost = () => {
+    setIsCreateModalOpen(true);
+  }
+
+  const closeModal = () => {
+    setIsCreateModalOpen(false);
+  }
+
   return (
     <div>
+      <div>
+        <Button color="green" onClick={() => newPost()}>
+           New Post
+        </Button>
+      </div>
       <Table singleLine>
         <Table.Header>
           <Table.Row>
@@ -57,6 +72,16 @@ export default function Read() {
           })}
         </Table.Body>
       </Table>
+
+      <Modal open={isCreateModalOpen} onClose={closeModal}>
+        <Modal.Header>Add New Post</Modal.Header>
+        <Modal.Content>
+          <div>
+           <Create/>
+          </div>
+          <Button color="orange" onClick={closeModal}>Cancel</Button>
+        </Modal.Content>
+      </Modal>
     </div>
   )
 }

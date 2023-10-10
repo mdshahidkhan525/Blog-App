@@ -32,7 +32,7 @@ export default function Create() {
                   <label>Description</label>
                   <input placeholder='Description' onChange={(e) => setDescription(e.target.value)} />
               </Form.Field>
-              <Button onClick={postData} type='submit'>Submit</Button>
+              <Button color="green" onClick={postData} type='submit'>Create</Button>
           </Form>
       </div>
   )
