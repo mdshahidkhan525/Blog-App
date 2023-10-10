@@ -29,7 +29,7 @@ export default function Create({setIsCreateModalOpen, fetchPosts}) {
               </Form.Field>
               <Form.Field>
                   <label>Description</label>
-                  <input placeholder='Description' onChange={(e) => setDescription(e.target.value)} />
+                  <textarea placeholder='Description' onChange={(e) => setDescription(e.target.value)}></textarea>
               </Form.Field>
               <Button color="green" onClick={postData} type='submit'>Create</Button>
           </Form>
