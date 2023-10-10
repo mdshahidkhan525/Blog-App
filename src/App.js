@@ -11,7 +11,7 @@ function App() {
         <div>
           <Routes>
             <Route path='/create' element={<Create />}/>
-            <Route path='/read' element={<Read />}/>
+            <Route path='' element={<Read />}/>
           </Routes>
         </div>
       </div>
