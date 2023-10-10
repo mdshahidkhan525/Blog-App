@@ -50,6 +50,7 @@ export default function Read() {
       <Table singleLine>
         <Table.Header>
           <Table.Row>
+            <Table.HeaderCell>Post ID</Table.HeaderCell>
             <Table.HeaderCell>Title</Table.HeaderCell>
             <Table.HeaderCell>Description</Table.HeaderCell>
             <Table.HeaderCell>Action</Table.HeaderCell>
@@ -60,6 +61,7 @@ export default function Read() {
           {posts.map((post) => {
             return (
               <Table.Row key={post.id}>
+                <Table.Cell>{post.id}</Table.Cell>
                 <Table.Cell>{post.title}</Table.Cell>
                 <Table.Cell>{post.body}</Table.Cell>
                 <Table.Cell>
@@ -77,7 +79,7 @@ export default function Read() {
         <Modal.Header>Add New Post</Modal.Header>
         <Modal.Content>
           <div>
-           <Create/>
+           <Create setIsCreateModalOpen={setIsCreateModalOpen} fetchPosts={fetchPosts}/>
           </div>
           <Button color="orange" onClick={closeModal}>Cancel</Button>
         </Modal.Content>
