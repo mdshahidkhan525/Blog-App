@@ -7,7 +7,7 @@ export default function Create({setIsCreateModalOpen, fetchPosts, closeModal}) {
   const [description, setDescription] = useState('');
   const postData = () => {
    axios
-      .post('http://localhost:3001/posts', {
+      .post(`${process.env.BASE_URL}/posts`, {
         title: title,
         body: description
       })
