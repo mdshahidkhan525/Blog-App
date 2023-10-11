@@ -3,6 +3,7 @@ import { Button, Form, Table, Modal } from 'semantic-ui-react'
 import axios from 'axios';
 import Create from './create';
 import Edit from './edit';
+import SearchPost from './search_post';
 
 export default function Read() {
   const [posts, setPosts] = useState([]);
@@ -55,6 +56,7 @@ export default function Read() {
   return (
     <div>
       <div>
+        <SearchPost/>
         <Button color="green" onClick={() => newPost()}>
            New Post
         </Button>

@@ -58,3 +58,8 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 12px !important;
 }
+
+.input-box{
+  float: right;
+  margin-right: 10px;
+}
