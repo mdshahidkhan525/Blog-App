@@ -94,10 +94,7 @@ export default function Read() {
       <Modal open={isCreateModalOpen} onClose={closeModal}>
         <Modal.Header>Add New Post</Modal.Header>
         <Modal.Content>
-          <div>
-           <Create setIsCreateModalOpen={setIsCreateModalOpen} fetchPosts={fetchPosts}/>
-          </div>
-          <Button color="orange" onClick={closeModal}>Cancel</Button>
+          <Create setIsCreateModalOpen={setIsCreateModalOpen} fetchPosts={fetchPosts} closeModal={closeModal}/>
         </Modal.Content>
       </Modal>
 

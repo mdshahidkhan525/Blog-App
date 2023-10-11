@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form } from 'semantic-ui-react'
 import axios from 'axios';
 
-export default function Create({setIsCreateModalOpen, fetchPosts}) {
+export default function Create({setIsCreateModalOpen, fetchPosts, closeModal}) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const postData = () => {
@@ -31,7 +31,10 @@ export default function Create({setIsCreateModalOpen, fetchPosts}) {
                   <label>Description</label>
                   <textarea placeholder='Description' onChange={(e) => setDescription(e.target.value)}></textarea>
               </Form.Field>
-              <Button color="green" onClick={postData} type='submit'>Create</Button>
+              <div className='button-div'>
+                <Button color="red" onClick={closeModal}>Cancel</Button>
+                <Button color="green" onClick={postData} type='submit'>Create</Button>
+              </div>
           </Form>
       </div>
   )
