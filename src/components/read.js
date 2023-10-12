@@ -5,6 +5,7 @@ import Create from './create';
 import Edit from './edit';
 import SearchPost from './search_post';
 import ReactPaginate from 'react-paginate';
+import { makeStyles } from '@mui/styles';
 
 export default function Read() {
   const [posts, setPosts] = useState([]);
@@ -13,6 +14,7 @@ export default function Read() {
   const [editPostId, setEditPostId] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
   const [postsPerPage] = useState(8);
+  const classes = useStyles();
 
   useEffect(() => {
     fetchPosts();
@@ -117,7 +119,7 @@ export default function Read() {
       </Modal>
 
       {/* Pagination Controls */}
-      <div className='pagination-center'>
+      <div className={classes.pagination}>
         <ReactPaginate
           previousLabel={'previous'}
           nextLabel={'next'}
@@ -134,3 +136,18 @@ export default function Read() {
     </div>
   );
 }
+const useStyles = makeStyles({
+  pagination: {
+    paddingTop: '10px',
+    textAlign: 'center',
+    "& li": {
+      color: "red",
+      display: "inline",
+      padding: "10px",
+      border: "1px solid black",
+      "& a": {
+        color: "#2185d0"
+      }
+    }
+  }
+});
