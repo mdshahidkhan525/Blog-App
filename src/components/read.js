@@ -19,7 +19,7 @@ export default function Read() {
   }, []);
 
   const fetchPosts = () => {
-    axios.get('http://localhost:3001/posts')
+    axios.get(`${process.env.REACT_APP_BASE_URL}/posts`)
       .then(response => {
         setPosts(response.data);
       })
@@ -29,7 +29,7 @@ export default function Read() {
   }
 
   const handleDelete = (postId) => {
-    axios.delete(`http://localhost:3001/posts/${postId}`)
+    axios.delete(`${process.env.REACT_APP_BASE_URL}/posts/${postId}`)
       .then(response => {
         console.log('Post deleted successfully', response.data);
         setPosts(prevPosts => prevPosts.filter(post => post.id !== postId));

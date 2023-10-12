@@ -6,7 +6,7 @@ export default function Edit({ postId, fetchPosts, closeModal }) {
   const [post, setPost] = useState({ title: '', body: '' });
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/posts/${postId}`)
+    axios.get(`${process.env.REACT_APP_BASE_URL}/posts/${postId}`)
       .then(response => {
         setPost(response.data);
       })
@@ -16,7 +16,7 @@ export default function Edit({ postId, fetchPosts, closeModal }) {
   }, [postId]);
 
   const handleUpdate = () => {
-    axios.put(`http://localhost:3001/posts/${postId}`, post)
+    axios.put(`${process.env.REACT_APP_BASE_URL}/posts/${postId}`, post)
       .then(response => {
         console.log('Post updated successfully', response.data);
         fetchPosts();
