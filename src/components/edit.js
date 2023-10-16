@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Form, Modal } from 'semantic-ui-react';
 import axios from 'axios';
+const headers = JSON.parse(localStorage.getItem('headers'));
 
 export default function Edit({ postId, fetchPosts, closeModal }) {
   const [post, setPost] = useState({ title: '', body: '' });
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_BASE_URL}/posts/${postId}`)
+    axios.get(`${process.env.REACT_APP_BASE_URL}/posts/${postId}`, { headers: headers })
       .then(response => {
         setPost(response.data);
       })
@@ -16,7 +17,7 @@ export default function Edit({ postId, fetchPosts, closeModal }) {
   }, [postId]);
 
   const handleUpdate = () => {
-    axios.put(`${process.env.REACT_APP_BASE_URL}/posts/${postId}`, post)
+    axios.put(`${process.env.REACT_APP_BASE_URL}/posts/${postId}`, post, { headers: headers })
       .then(response => {
         console.log('Post updated successfully', response.data);
         fetchPosts();
