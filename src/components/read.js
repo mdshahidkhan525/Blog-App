@@ -11,7 +11,9 @@ export default function Read() {
   const [posts, setPosts] = useState([]);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [editPostId, setEditPostId] = useState(null);
+  const [postId, setPostId] = useState("");
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
   const [currentPage, setCurrentPage] = useState(0);
   const [postsPerPage] = useState(8);
   const classes = useStyles();
@@ -42,9 +44,10 @@ export default function Read() {
       });
   }
 
-  const handleEdit = (postId) => {
-    // Set the post ID to be edited and open the edit modal
-    setEditPostId(postId);
+  const handleEdit = (id, title, body) => {
+    setPostId(id);
+    setTitle(title);
+    setBody(body);
     setIsEditModalOpen(true);
   }
 
@@ -55,7 +58,7 @@ export default function Read() {
   const closeModal = () => {
     setIsCreateModalOpen(false);
     setIsEditModalOpen(false);
-    setEditPostId(null);
+    setPostId(null);
   }
 
   const indexOfLastPost = (currentPage + 1) * postsPerPage;
@@ -91,7 +94,7 @@ export default function Read() {
                   <Button color="red" onClick={() => handleDelete(post.id)}>
                     Delete
                   </Button>
-                  <Button color="blue" onClick={() => handleEdit(post.id)}>
+                  <Button color="blue" onClick={() => handleEdit(post.id, post.title, post.body)}>
                     Edit
                   </Button>
                 </Table.Cell>
@@ -114,7 +117,7 @@ export default function Read() {
         <Modal.Header>Edit Post</Modal.Header>
         <Modal.Content>
           <div>
-            <Edit postId={editPostId} fetchPosts={fetchPosts} closeModal={closeModal} />
+            <Edit postId={postId} title={title} body={body} fetchPosts={fetchPosts}closeModal={closeModal} />
           </div>
         </Modal.Content>
       </Modal>
