@@ -21,7 +21,7 @@ export default function Read() {
   }, []);
 
   const fetchPosts = () => {
-    axios.get(`${process.env.REACT_APP_BASE_URL}/posts`)
+    axios.get(`${process.env.REACT_APP_BASE_URL}/posts`, { headers: JSON.parse(localStorage.getItem('headers')) })
       .then(response => {
         setPosts(response.data);
       })
@@ -142,6 +142,7 @@ const useStyles = makeStyles({
     textAlign: 'center',
     "& li": {
       color: "red",
+      margin: '2px',
       display: "inline",
       padding: "10px",
       border: "1px solid black",
