@@ -12,15 +12,14 @@ export default function SignIn() {
   const signIn = (e) => {
     e.preventDefault();
    axios
-      .post(`http://localhost:3001/auth/sign_in`, {
+      .post(`http://localhost:3001/auth/login`, {
         email: email,
         password: password
       })
       .then(response => {
          if (response.status == 200) {
-           localStorage.setItem('headers', JSON.stringify(response.headers));
-           localStorage.setItem('session', response.headers['access-token']);
-           navigate('/');
+          localStorage.setItem('token', response.data['token']);
+          navigate('/');
          }
       })
       .catch(error => {

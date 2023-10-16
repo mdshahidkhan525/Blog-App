@@ -17,14 +17,14 @@ export default function Read() {
   const [currentPage, setCurrentPage] = useState(0);
   const [postsPerPage] = useState(8);
   const classes = useStyles();
-  const headers = JSON.parse(localStorage.getItem('headers'));
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     fetchPosts();
   }, []);
 
   const fetchPosts = () => {
-    axios.get(`${process.env.REACT_APP_BASE_URL}/posts`, { headers: headers })
+    axios.get(`${process.env.REACT_APP_BASE_URL}/posts`, { headers: { Authorization: `Bearer ${token}`}})
       .then(response => {
         setPosts(response.data);
       })
@@ -34,7 +34,7 @@ export default function Read() {
   }
 
   const handleDelete = (postId) => {
-    axios.delete(`${process.env.REACT_APP_BASE_URL}/posts/${postId}`, { headers: headers })
+    axios.delete(`${process.env.REACT_APP_BASE_URL}/posts/${postId}`, { headers: { Authorization: `Bearer ${token}`}})
       .then(response => {
         console.log('Post deleted successfully', response.data);
         setPosts(prevPosts => prevPosts.filter(post => post.id !== postId));

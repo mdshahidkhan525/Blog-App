@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Form, Modal } from 'semantic-ui-react';
 import axios from 'axios';
-const headers = JSON.parse(localStorage.getItem('headers'));
+const token = localStorage.getItem('token');
 
 export default function Edit({ postId, title, body, fetchPosts, closeModal }) {
   const [post, setPost] = useState({ title: title, body: body });
 
   const handleUpdate = () => {
-    axios.put(`${process.env.REACT_APP_BASE_URL}/posts/${postId}`, post, { headers: headers })
+    axios.put(`${process.env.REACT_APP_BASE_URL}/posts/${postId}`, post, { headers: { Authorization: `Bearer ${token}`}})
       .then(response => {
         console.log('Post updated successfully', response.data);
         fetchPosts();
