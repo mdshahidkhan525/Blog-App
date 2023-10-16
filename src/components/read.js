@@ -119,20 +119,22 @@ export default function Read() {
       </Modal>
 
       {/* Pagination Controls */}
-      <div className={classes.pagination}>
-        <ReactPaginate
-          previousLabel={'previous'}
-          nextLabel={'next'}
-          breakLabel={'...'}
-          pageCount={Math.ceil(posts.length / postsPerPage)}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={5}
-          onPageChange={(selected) => setCurrentPage(selected.selected)}
-          containerClassName={'pagination'}
-          subContainerClassName={'pages pagination'}
-          activeClassName={'active'}
-        />
-      </div>
+      { posts.length > postsPerPage &&
+        <div className={classes.pagination}>
+          <ReactPaginate
+            previousLabel={'previous'}
+            nextLabel={'next'}
+            breakLabel={'...'}
+            pageCount={Math.ceil(posts.length / postsPerPage)}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={5}
+            onPageChange={(selected) => setCurrentPage(selected.selected)}
+            containerClassName={'pagination'}
+            subContainerClassName={'pages pagination'}
+            activeClassName={'active'}
+          />
+        </div>
+      }
     </div>
   );
 }
