@@ -14,7 +14,7 @@ export default function SignUp() {
   const registerUser = (e) => {
      e.preventDefault();
     axios
-       .post(`http://localhost:3001/users`, {
+       .post(`${process.env.REACT_APP_BASE_URL}/users`, {
          username: username,
          email: email,
          password: password,

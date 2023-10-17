@@ -12,7 +12,7 @@ export default function SignIn() {
   const signIn = (e) => {
     e.preventDefault();
    axios
-      .post(`http://localhost:3001/auth/login`, {
+      .post(`${process.env.REACT_APP_BASE_URL}/auth/login`, {
         email: email,
         password: password
       })
