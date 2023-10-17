@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
-  // const [token, setToken] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [password_confirmation, setConfirmPassword] = useState('');
@@ -14,15 +14,15 @@ export default function SignUp() {
   const registerUser = (e) => {
      e.preventDefault();
     axios
-       .post(`http://localhost:3001/auth`, {
+       .post(`http://localhost:3001/users`, {
+         username: username,
          email: email,
          password: password,
          password_confirmation: password_confirmation
        })
        .then(response => {
-          if (response.status === 200) {
-            localStorage.setItem('headers', JSON.stringify(response.headers));
-            localStorage.setItem('session', response.headers['access-token']);
+          if (response.status === 201) {
+            localStorage.setItem('token', response.data['token']);
             navigate('/');
           }
        })
@@ -34,6 +34,15 @@ export default function SignUp() {
     <div>
       <h2 className="main-header">Sign Up</h2>
       <form onSubmit={registerUser} className={classes.form}>
+        <input
+          className={classes.inputBox}
+          type="username"
+          name="username"
+          placeholder="Username"
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+
         <input
           className={classes.inputBox}
           type="email"
