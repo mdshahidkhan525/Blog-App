@@ -13,10 +13,10 @@ function App() {
         <h2 className="main-header">My Blog App</h2>
         <div>
           <Routes>
-            <Route path='/create' element={<Create />}/>
+            <Route path='create' element={<Create />}/>
             <Route path='/' element={<Read />}/>
-            <Route path='/signup' element={<SignUp />}/>
-            <Route path='/signin' element={<SignIn />}/>
+            <Route path='signup' element={<SignUp />}/>
+            <Route path='signin' element={<SignIn />}/>
           </Routes>
         </div>
       </div>
