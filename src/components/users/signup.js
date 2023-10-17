@@ -20,7 +20,7 @@ export default function SignUp() {
          password_confirmation: password_confirmation
        })
        .then(response => {
-          if (response.status == 200) {
+          if (response.status === 200) {
             localStorage.setItem('headers', JSON.stringify(response.headers));
             localStorage.setItem('session', response.headers['access-token']);
             navigate('/');
