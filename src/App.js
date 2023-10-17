@@ -1,7 +1,7 @@
 import './App.css';
 import Create from './components/create';
 import Read from './components/read';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import SignUp from './components/users/SignUp';
 import SignIn from './components/users/signin';
 import { isUserLoggedIn } from './services/authService';
