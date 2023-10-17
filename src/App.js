@@ -8,7 +8,7 @@ import { isUserLoggedIn } from './services/authService';
 
 function App() {
   return (
-    <Router>
+    <Router basename='/'>
       <div className="main">
         <h2 className="main-header">My Blog App</h2>
         <div>
