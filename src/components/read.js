@@ -84,7 +84,7 @@ export default function Read() {
         </Table.Header>
 
         <Table.Body>
-          {currentPosts && currentPosts?.map((post) => {
+          {posts && posts?.map((post) => {
             return (
               <Table.Row key={post.id}>
                 <Table.Cell>{post.id}</Table.Cell>
