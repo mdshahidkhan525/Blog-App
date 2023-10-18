@@ -1,4 +1,4 @@
 export const isUserLoggedIn = () => {
-  const sessionData = localStorage.getItem('session');
+  const sessionData = localStorage.getItem('token');
   return sessionData !== null;
 };
