@@ -63,7 +63,7 @@ export default function Read() {
 
   const indexOfLastPost = (currentPage + 1) * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts?.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPosts = posts
 
   return (
     <div>
