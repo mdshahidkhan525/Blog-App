@@ -63,7 +63,7 @@ export default function Read() {
 
   const indexOfLastPost = (currentPage + 1) * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPosts = posts?.slice(indexOfFirstPost, indexOfLastPost);
 
   return (
     <div>
@@ -84,7 +84,7 @@ export default function Read() {
         </Table.Header>
 
         <Table.Body>
-          {currentPosts.map((post) => {
+          {currentPosts && currentPosts?.map((post) => {
             return (
               <Table.Row key={post.id}>
                 <Table.Cell>{post.id}</Table.Cell>
