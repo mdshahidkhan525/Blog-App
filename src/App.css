@@ -79,3 +79,19 @@
 .nav-link-item{
   margin: 20px;
 }
+
+.flashbar-container {
+  text-align: right;
+  margin-bottom: 10px;
+  margin-top: -13px;
+}
+
+.flashbar {
+  background-color: #21ba45;
+  color: white;
+  display: inline;
+  padding: 5px 10px;
+  padding-left: 30px;
+  padding-right: 80px;
+  border-radius: 5px;
+}

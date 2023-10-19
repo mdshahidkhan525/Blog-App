@@ -6,8 +6,13 @@ import Edit from './edit';
 import SearchPost from './search_post';
 import ReactPaginate from 'react-paginate';
 import { makeStyles } from '@mui/styles';
+import { useLocation } from 'react-router-dom';
+import FlashMessage from './shared/FlashMessage';
 
 export default function Read() {
+  const location = useLocation();
+  const [message, setMessage] = useState(location.state?.message || '');
+
   const [posts, setPosts] = useState([]);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -22,6 +27,10 @@ export default function Read() {
   useEffect(() => {
     fetchPosts();
   }, []);
+
+  const handleFlashMessageTimeout = () => {
+    setMessage('');
+  };
 
   const fetchPosts = () => {
     axios.get(`${process.env.REACT_APP_BASE_URL}/posts`, { headers: { Authorization: `Bearer ${token}`}})
@@ -72,6 +81,7 @@ export default function Read() {
         <Button color="green" onClick={() => newPost()}>
           New Post
         </Button>
+        <FlashMessage message={message} onTimeout={handleFlashMessageTimeout}/>
       </div>
       <Table singleLine>
         <Table.Header>

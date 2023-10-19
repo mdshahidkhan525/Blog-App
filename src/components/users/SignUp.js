@@ -23,7 +23,7 @@ export default function SignUp() {
        .then(response => {
           if (response.status === 201) {
             localStorage.setItem('token', response.data['token']);
-            navigate('/');
+            navigate('/', { state: { message: 'Signup Successfully..!!' } });
           }
        })
        .catch(error => {

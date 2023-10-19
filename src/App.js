@@ -1,4 +1,5 @@
 import './App.css';
+import React, { useState } from 'react';
 import Create from './components/create';
 import Read from './components/read';
 import { BrowserRouter as Router, Routes, Link, Route } from 'react-router-dom';
@@ -7,6 +8,8 @@ import SignIn from './components/users/signin';
 import { isUserLoggedIn } from './services/authService';
 import Navbar from './components/shared/navbar';
 function App() {
+  const [flashMessage, setFlashMessage] = useState('');
+
   return (
     <Router basename='/'>
       <div className="main">
